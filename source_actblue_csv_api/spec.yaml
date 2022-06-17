@@ -1,0 +1,25 @@
+documentationUrl: https://example.com
+connectionSpecification:
+  $schema: http://json-schema.org/draft-07/schema#
+  title: ActBlue CSV API Spec
+  type: object
+  required:
+    - actblue_client_uuid
+    - actblue_client_secret
+    - date_range_start
+  additionalProperties: false
+  properties:
+    actblue_client_uuid:
+      type: string
+      description: Client UUID
+      pattern: ^.*$
+      airbyte_secret: true
+    actblue_client_secret:
+      type: string
+      description: client authentication secret
+      pattern: ^.*$
+      airbyte_secret: true
+    date_range_start:
+      type: string
+      description: date range start
+      pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$

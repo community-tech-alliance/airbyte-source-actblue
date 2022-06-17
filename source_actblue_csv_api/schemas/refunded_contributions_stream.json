@@ -1,0 +1,273 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Receipt ID": {
+      "type": ["null", "string"]
+    },
+    "Date": {
+      "type": ["null", "string"]
+    },
+    "Amount": {
+      "type": ["null", "number"]
+    },
+    "Recurring Total Months": {
+      "type": ["null", "string"]
+    },
+    "Recurrence Number": {
+      "type": ["null", "integer"]
+    },
+    "Recipient": {
+      "type": ["null", "string"]
+    },
+    "Fundraising Page": {
+      "type": ["null", "string"]
+    },
+    "Fundraising Partner": {
+      "type": ["null", "string"]
+    },
+    "Reference Code 2": {
+      "type": ["null", "string"]
+    },
+    "Reference Code": {
+      "type": ["null", "string"]
+    },
+    "Donor First Name": {
+      "type": ["null", "string"]
+    },
+    "Donor Last Name": {
+      "type": ["null", "string"]
+    },
+    "Donor Addr1": {
+      "type": ["null", "string"]
+    },
+    "Donor Addr2": {
+      "type": ["null", "string"]
+    },
+    "Donor City": {
+      "type": ["null", "string"]
+    },
+    "Donor State": {
+      "type": ["null", "string"]
+    },
+    "Donor ZIP": {
+      "type": ["null", "string"]
+    },
+    "Donor Country": {
+      "type": ["null", "string"]
+    },
+    "Donor Occupation": {
+      "type": ["null", "string"]
+    },
+    "Donor Employer": {
+      "type": ["null", "string"]
+    },
+    "Donor Email": {
+      "type": ["null", "string"]
+    },
+    "Donor Phone": {
+      "type": ["null", "string"]
+    },
+    "New Express Signup": {
+      "type": ["null", "string"]
+    },
+    "Comments": {
+      "type": ["null", "string"]
+    },
+    "Check Number": {
+      "type": ["null", "integer"]
+    },
+    "Check Date": {
+      "type": ["null", "string"]
+    },
+    "Employer Addr1": {
+      "type": ["null", "string"]
+    },
+    "Employer Addr2": {
+      "type": ["null", "string"]
+    },
+    "Employer City": {
+      "type": ["null", "string"]
+    },
+    "Employer State": {
+      "type": ["null", "string"]
+    },
+    "Employer ZIP": {
+      "type": ["null", "string"]
+    },
+    "Employer Country": {
+      "type": ["null", "string"]
+    },
+    "Donor ID": {
+      "type": ["null", "string"]
+    },
+    "Fundraiser ID": {
+      "type": ["null", "string"]
+    },
+    "Fundraiser Recipient ID": {
+      "type": ["null", "string"]
+    },
+    "Fundraiser Contact Email": {
+      "type": ["null", "string"]
+    },
+    "Fundraiser Contact First Name": {
+      "type": ["null", "string"]
+    },
+    "Fundraiser Contact Last Name": {
+      "type": ["null", "string"]
+    },
+    "Partner ID": {
+      "type": ["null", "string"]
+    },
+    "Partner Contact Email": {
+      "type": ["null", "string"]
+    },
+    "Partner Contact First Name": {
+      "type": ["null", "string"]
+    },
+    "Partner Contact Last Name": {
+      "type": ["null", "string"]
+    },
+    "Lineitem ID": {
+      "type": ["null", "integer"]
+    },
+    "AB Test Name": {
+      "type": ["null", "string"]
+    },
+    "AB Variation": {
+      "type": ["null", "string"]
+    },
+    "Recipient Committee": {
+      "type": ["null", "string"]
+    },
+    "Recipient ID": {
+      "type": ["null", "integer"]
+    },
+    "Recipient Gov ID": {
+      "type": ["null", "string"]
+    },
+    "Recipient Election": {
+      "type": ["null", "string"]
+    },
+    "Payment ID": {
+      "type": ["null", "integer"]
+    },
+    "Payment Date": {
+      "type": ["null", "string"]
+    },
+    "Disbursement ID": {
+      "type": ["null", "integer"]
+    },
+    "Disbursement Date": {
+      "type": ["null", "string"]
+    },
+    "Recovery ID": {
+      "type": ["null", "integer"]
+    },
+    "Recovery Date": {
+      "type": ["null", "string"]
+    },
+    "Refund ID": {
+      "type": ["null", "integer"]
+    },
+    "Refund Date": {
+      "type": ["null", "string"]
+    },
+    "Fee": {
+      "type": ["null", "number"]
+    },
+    "Recur Weekly": {
+      "type": ["null", "string"]
+    },
+    "ActBlue Express Lane": {
+      "type": ["null", "string"]
+    },
+    "Merchant ID": {
+      "type": ["null", "number"]
+    },
+    "Card Type": {
+      "type": ["null", "string"]
+    },
+    "Card Last4": {
+      "type": ["null", "number"]
+    },
+    "Card Expiration": {
+      "type": ["null", "string"]
+    },
+    "Card AVS": {
+      "type": ["null", "string"]
+    },
+    "Approved": {
+      "type": ["null", "string"]
+    },
+    "Mobile": {
+      "type": ["null", "string"]
+    },
+    "Recurring Upsell Shown": {
+      "type": ["null", "string"]
+    },
+    "Recurring Upsell Succeeded": {
+      "type": ["null", "string"]
+    },
+    "Double Down": {
+      "type": ["null", "string"]
+    },
+    "Smart Recurring": {
+      "type": ["null", "string"]
+    },
+    "Monthly Recurring Amount": {
+      "type": ["null", "number"]
+    },
+    "Apple Pay": {
+      "type": ["null", "string"]
+    },
+    "Card Replaced by Account Updater": {
+      "type": ["null", "string"]
+    },
+    "ActBlue Express Donor": {
+      "type": ["null", "string"]
+    },
+    "Custom Field 1 Label": {
+      "type": ["null", "string"]
+    },
+    "Custom Field 1 Value": {
+      "type": ["null", "string"]
+    },
+    "Donor US Passport Number": {
+      "type": ["null", "string"]
+    },
+    "Text Message Opt In": {
+      "type": ["null", "string"]
+    },
+    "Gift Identifier": {
+      "type": ["null", "string"]
+    },
+    "Gift Declined": {
+      "type": ["null", "string"]
+    },
+    "Shipping Addr1": {
+      "type": ["null", "string"]
+    },
+    "Shipping City": {
+      "type": ["null", "string"]
+    },
+    "Shipping State": {
+      "type": ["null", "string"]
+    },
+    "Shipping Zip": {
+      "type": ["null", "string"]
+    },
+    "Shipping Country": {
+      "type": ["null", "string"]
+    },
+    "Weekly Recurring Amount": {
+      "type": ["null", "number"]
+    },
+    "Smart Boost Amount": {
+      "type": ["null", "string"]
+    },
+    "Smart Boost Shown": {
+      "type": ["null", "string"]
+    }
+  }
+}
