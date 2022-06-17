@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 from typing import Any, Iterable, List, Mapping, Optional, Tuple
 
 import requests
-from numpy import nan
-from pandas import read_csv
+from numpy import nan, float64
+from pandas import read_csv, BooleanDtype
 from airbyte_cdk.logger import AirbyteLogger
 from airbyte_cdk.sources import AbstractSource
 from airbyte_cdk.sources.streams import Stream
@@ -143,6 +143,26 @@ class ActblueCsvApiStream(HttpStream):
                 logger.info(f"CSV Polling try #{poll_try} failed with: {http_error}")
         raise Exception(f"Polling for {self.url_base}csvs/{csv_id} has timed out")
 
+    def get_stream_schema(self):
+        """
+        Converts the JSON Schema for the stream into schema that can be used for
+        loading Pandas dataframe.
+        """
+        json_to_pandas_schema_match = {
+            "string": object,
+            "number": float64,
+            "integer": 'Int64',
+            "bool": BooleanDtype
+        }
+        pandas_schema = {}
+        json_schema = self.get_json_schema()['properties']
+        for field_name, field_types in json_schema.items():
+            field_type = field_types['type'][1]
+            pandas_schema[field_name] = (
+                json_to_pandas_schema_match.get(field_type, object)
+            )
+
+        return pandas_schema
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
         """
@@ -159,8 +179,10 @@ class ActblueCsvApiStream(HttpStream):
             "Card Type",
             "Card AVS"
         ]
+
+        schema = self.get_stream_schema()
         
-        for df in read_csv(csv_url, header=0, chunksize=10000):
+        for df in read_csv(csv_url, header=0, chunksize=10000, dtype=schema):
             yield from (
                 df.replace({nan:None}).drop(columns=columns_to_drop, errors="ignore").to_dict(orient="records")
             )
