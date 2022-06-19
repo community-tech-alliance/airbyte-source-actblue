@@ -33,4 +33,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/community-tech-alliance/source-actblue:latest, community-tech-alliance/source-actblue:$IMAGE_TAG
+        tags: ghcr.io/community-tech-alliance/source-actblue:latest, ghcr.io/community-tech-alliance/source-actblue:$IMAGE_TAG
