@@ -3,12 +3,19 @@
 This is the repository for the Actblue Csv Api source connector, written in Python.
 For information about how to use this connector within Airbyte, see [the documentation](https://docs.airbyte.io/integrations/sources/actblue-csv-api).
 
+## Building and Publishing using GHA
+The workflow in the repo will automatically build and publish a docker image to [Github Container Registry](https://github.com/community-tech-alliance/airbyte-source-actblue/pkgs/container/source-actblue) when you create a PR and everytime that PR is updated (new pushes, etc..). It will push the image with a tag that specifies the PR number (ex. `pr-1`). When merged to `main` it will build and publish an image tagged with the branch name. 
+
+To trigger a build and publish with version number, [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) on gh and add a tag with the desired version number with the following format `v1.2.3`. This will trigger the workflow and will build and publish an images with the tag version you added and also add the `latest` tag to this version.
+
+For more info on tags please refer to the [Docker Metadata Action](https://github.com/marketplace/actions/docker-metadata-action#tags-input)
+
 ## Local development
 
 ### Prerequisites
 **To iterate on this connector, make sure to complete this prerequisites section.**
 
-#### Minimum Python version required `= 3.7.0`
+#### Minimum Python version required `= 3.9.0`
 
 #### Build & Activate Virtual Environment and install dependencies
 From this connector directory, create a virtual environment:

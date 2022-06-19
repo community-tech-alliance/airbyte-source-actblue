@@ -1,8 +1,5 @@
 name: build_and_publish_image
 
-env: #TODO() be sure to manually update the image tag!
-  IMAGE_TAG: "0.0.1"
-
 on:
   push:
     branches:
@@ -23,7 +20,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: ghcr.io/community-tech-alliance/source-actblue
-        
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
