@@ -23,10 +23,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: ghcr.io/community-tech-alliance/source-actblue
-        tags: |
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-
+        
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
