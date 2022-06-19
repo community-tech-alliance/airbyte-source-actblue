@@ -6,7 +6,9 @@ env: #TODO() be sure to manually update the image tag!
 on:
   push:
     branches:
-      - main
+      - master
+    tags:
+      - v*
   pull_request:
 
 jobs:
@@ -15,6 +17,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Docker Metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ghcr.io/community-tech-alliance/source-actblue
+        tags: |
+          type=ref,event=pr
+          type=semver,pattern={{version}}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -32,5 +43,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
-        tags: ghcr.io/community-tech-alliance/source-actblue:latest, ghcr.io/community-tech-alliance/source-actblue:$IMAGE_TAG
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
