@@ -93,6 +93,20 @@ class ActblueCsvApiStream(HttpStream):
     
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         return None
+    
+    def backoff_time(self, response: requests.Response) -> Optional[float]:
+        """
+        The ActBlue CSV API has a rate limit of 10 requests per minute. Since we
+        have to split requests into >6 month intervals this can end up hitting that 
+        limit pretty easily. Rather than using exponential backoff, lets just set backoff
+        time to 1 minute (Automatically retried 5 times already too)
+
+        :param response:
+        :return how long to backoff in seconds. The return value may be a floating point 
+            number for subsecond precision. Returning None defers backoff
+            to the default backoff behavior (e.g using an exponential algorithm).
+        """
+        return 60
 
     def request_body_json(
         self,
