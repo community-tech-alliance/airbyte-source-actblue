@@ -97,7 +97,7 @@ class ActblueCsvApiStream(HttpStream):
     def backoff_time(self, response: requests.Response) -> Optional[float]:
         """
         The ActBlue CSV API has a rate limit of 10 requests per minute. Since we
-        have to split requests into >6 month intervals this can end up hitting that 
+        have to split requests into <6 month intervals this can end up hitting that 
         limit pretty easily. Rather than using exponential backoff, lets just set backoff
         time to 1 minute (Automatically retried 5 times already too)
 
