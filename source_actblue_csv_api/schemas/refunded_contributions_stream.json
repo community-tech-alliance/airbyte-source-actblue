@@ -143,9 +143,6 @@
     "Recipient ID": {
       "type": ["null", "integer"]
     },
-    "Recipient Gov ID": {
-      "type": ["null", "string"]
-    },
     "Recipient Election": {
       "type": ["null", "string"]
     },
@@ -185,18 +182,6 @@
     "Merchant ID": {
       "type": ["null", "number"]
     },
-    "Card Type": {
-      "type": ["null", "string"]
-    },
-    "Card Last4": {
-      "type": ["null", "number"]
-    },
-    "Card Expiration": {
-      "type": ["null", "string"]
-    },
-    "Card AVS": {
-      "type": ["null", "string"]
-    },
     "Approved": {
       "type": ["null", "string"]
     },
@@ -231,9 +216,6 @@
       "type": ["null", "string"]
     },
     "Custom Field 1 Value": {
-      "type": ["null", "string"]
-    },
-    "Donor US Passport Number": {
       "type": ["null", "string"]
     },
     "Text Message Opt In": {
