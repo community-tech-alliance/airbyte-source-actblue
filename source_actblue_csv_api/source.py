@@ -264,7 +264,7 @@ class ManagedFormContributionsStream(ActblueCsvApiStream):
 
 class CancelledRecurringContributionsStream(ActblueCsvApiStream):
     """
-    Stream for the Managed Form Contributions API Type
+    Stream for the Cancelled Recurring Contributions API Type
     """
     primary_key = "Receipt ID"
     csv_type = "cancelled_recurring_contributions"
