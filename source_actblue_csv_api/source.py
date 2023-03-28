@@ -63,7 +63,7 @@ class ActblueCsvApiStream(HttpStream):
     ) -> List[Tuple[datetime]]:
         """
         The ActBlue CSV API is limited to only getting 6 months worth of data.
-        This function will be used to return a set of date ranges split by 24 weeks intervals
+        This function will be used to return a set of date ranges split by 24 week intervals
         to meet the full date_range specified.
 
         Parameters:
@@ -262,6 +262,13 @@ class ManagedFormContributionsStream(ActblueCsvApiStream):
     csv_type = "managed_form_contributions"
 
 
+class CancelledRecurringContributionsStream(ActblueCsvApiStream):
+    """
+    Stream for the Managed Form Contributions API Type
+    """
+    primary_key = "Receipt ID"
+    csv_type = "cancelled_recurring_contributions"
+
 # Source
 class SourceActblueCsvApi(AbstractSource):
     """
@@ -336,6 +343,10 @@ class SourceActblueCsvApi(AbstractSource):
                 date_range_start=config["date_range_start"]
             ),
             ManagedFormContributionsStream(
+                authenticator=auth,
+                date_range_start=config["date_range_start"]
+            ),
+            CancelledRecurringContributionsStream(
                 authenticator=auth,
                 date_range_start=config["date_range_start"]
             )
