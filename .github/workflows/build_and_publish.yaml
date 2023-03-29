@@ -1,5 +1,4 @@
 name: build_and_publish_image
-
 on:
   push:
     branches:
@@ -9,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  publish-source-twitter-image:
+  publish-source-actblue-image:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +18,13 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ghcr.io/community-tech-alliance/source-actblue
+        images: |
+          ghcr.io/community-tech-alliance/source-stackadapt
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=sha
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2

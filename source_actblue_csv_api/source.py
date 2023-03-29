@@ -16,7 +16,6 @@ from airbyte_cdk.sources.streams import Stream
 from airbyte_cdk.sources.streams.http import HttpStream
 from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
 from airbyte_cdk.models import SyncMode
-from airbyte_cdk.sources.utils.sentry import AirbyteSentry
 
 logger = AirbyteLogger()
 
@@ -210,32 +209,31 @@ class ActblueCsvApiStream(HttpStream):
         stream_state: Mapping[str, Any] = None,
     ) -> Iterable[Mapping[str, Any]]:
         next_page_token = None
-        with AirbyteSentry.start_transaction("read_records", self.name), AirbyteSentry.start_transaction_span("read_records"):
-            for date_range in self.get_date_ranges(self.date_range_start, self.date_range_end, timedelta(weeks=24)):
-                # Generate and Parse all CSVs for given Date Ranges
-                request_headers = self.request_headers(
-                    stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token
-                )
-                request = self._create_prepared_request(
-                    path=self.path(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token),
-                    headers=dict(request_headers, **self.authenticator.get_auth_header()),
-                    params=self.request_params(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token),
-                    json=self.request_body_json(
-                        date_range_start=datetime.strftime(date_range[0], self.DEFAULT_TIMESTAMP_FORMAT),
-                        date_range_end=datetime.strftime(date_range[1], self.DEFAULT_TIMESTAMP_FORMAT),
-                        stream_state=stream_state,
-                        stream_slice=stream_slice,
-                        next_page_token=next_page_token
-                    ),
-                )
-                request_kwargs = self.request_kwargs(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token)
+        for date_range in self.get_date_ranges(self.date_range_start, self.date_range_end, timedelta(weeks=24)):
+            # Generate and Parse all CSVs for given Date Ranges
+            request_headers = self.request_headers(
+                stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token
+            )
+            request = self._create_prepared_request(
+                path=self.path(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token),
+                headers=dict(request_headers, **self.authenticator.get_auth_header()),
+                params=self.request_params(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token),
+                json=self.request_body_json(
+                    date_range_start=datetime.strftime(date_range[0], self.DEFAULT_TIMESTAMP_FORMAT),
+                    date_range_end=datetime.strftime(date_range[1], self.DEFAULT_TIMESTAMP_FORMAT),
+                    stream_state=stream_state,
+                    stream_slice=stream_slice,
+                    next_page_token=next_page_token
+                ),
+            )
+            request_kwargs = self.request_kwargs(stream_state=stream_state, stream_slice=stream_slice, next_page_token=next_page_token)
 
-                response = self._send_request(request, request_kwargs)
+            response = self._send_request(request, request_kwargs)
 
-                yield from self.parse_response(response, stream_state=stream_state, stream_slice=stream_slice)
+            yield from self.parse_response(response, stream_state=stream_state, stream_slice=stream_slice)
 
-                # Always return an empty generator just in case no records were ever yielded
-                yield from []
+            # Always return an empty generator just in case no records were ever yielded
+            yield from []
 
 
 class PaidContributionsStream(ActblueCsvApiStream):
