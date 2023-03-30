@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Receipt ID": {
+      "type": ["null", "string"]
+    },
+    "Recurrence Amount": {
+      "type": ["null", "string"]
+    },
+    "Total Amount": {
+      "type": ["null", "string"]
+    },
+    "Initial Pledge Length": {
+      "type": ["null", "string"]
+    },
+    "Recurrence Frequency": {
+      "type": ["null", "string"]
+    },
+    "Initial Contribution Date": {
+      "type": ["null", "string"],
+      "format": "date"
+    },
+    "Cancelled On": {
+      "type": ["null", "string"],
+      "format": "date"
+    },
+    "Express Donor": {
+      "type": ["null", "string"]
+    },
+    "Donor First Name": {
+      "type": ["null", "string"]
+    },
+    "Donor Last Name": {
+      "type": ["null", "string"]
+    },
+    "Donor Address": {
+      "type": ["null", "string"]
+    },
+    "Donor City": {
+      "type": ["null", "string"]
+    },
+    "Donor State": {
+      "type": ["null", "string"]
+    },
+    "Donor ZIP": {
+      "type": ["null", "string"]
+    },
+    "Donor Country": {
+      "type": ["null", "string"]
+    },
+    "Donor Occupation": {
+      "type": ["null", "string"]
+    },
+    "Donor Employer": {
+      "type": ["null", "string"]
+    },
+    "Donor Email": {
+      "type": ["null", "string"]
+    },
+    "Donor Phone": {
+      "type": ["null", "string"]
+    },
+    "Reference Code": {
+      "type": ["null", "string"]
+    },
+    "Bump Recurring Seen": {
+      "type": ["null", "string"]
+    },
+    "Bump Recurring Succeeded": {
+      "type": ["null", "string"]
+    }
+  }
+}
